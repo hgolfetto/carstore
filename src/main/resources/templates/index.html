@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Carros</title>
+</head>
+<body>
+
+<h1>Cadastro de Carros</h1>
+
+<form action="/save" method="post">
+  Nome: <input type="text" name="name" required><br><br>
+  Marca: <input type="text" name="brand" required><br><br>
+  Ano: <input type="number" name="year" required><br><br>
+  <button type="submit">Salvar</button>
+</form>
+
+<h2>Lista de Carros</h2>
+
+<ul>
+  <li th:each="car : ${cars}">
+    <span th:text="${car.name}"></span> -
+    <span th:text="${car.brand}"></span> -
+    <span th:text="${car.year}"></span>
+
+    <a th:href="@{/delete/{id}(id=${car.id})}">Excluir</a>
+  </li>
+</ul>
+
+</body>
+</html>
